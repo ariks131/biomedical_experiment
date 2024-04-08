@@ -1,0 +1,30 @@
+// the setup routine runs once when you press reset:
+unsigned long const period1 = 5;
+unsigned long start_time;
+
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(115200);
+  start_time = millis();
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  unsigned long now = millis() - start_time;
+  int PPGValue = analogRead(A0);
+  int PCGValue = analogRead(A1);
+  int EMGValue = analogRead(A2);
+  int ECGValue = analogRead(A3);
+
+    if (0 == now % period1){
+    // Serial.print(now);
+    // Serial.print(",");
+     Serial.print(PPGValue);
+     Serial.print(",");
+     Serial.print(PCGValue);
+     Serial.print(",");
+     Serial.print(EMGValue);
+     Serial.print(",");
+     Serial.println(ECGValue);
+   }
+}
